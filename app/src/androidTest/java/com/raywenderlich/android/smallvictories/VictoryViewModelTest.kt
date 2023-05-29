@@ -57,6 +57,13 @@ class VictoryViewModelTest {
   }
 
   @Test
+  fun incrementVictoryCountCallsRepository() {
+    stubVictoryRepositoryGetVictoryCount(5) // Arrange
+    viewModel.incrementVictoryCount() // Act
+    verify(mockVictoryRepository).getVictoryCount() // Assert
+  }
+
+  @Test
   fun setVictoryTitleSavesTitle() {
     val title = "New title"
     viewModel.setVictoryTitle(title)
